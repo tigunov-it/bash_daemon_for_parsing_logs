@@ -1,0 +1,17 @@
+#!/bin/bash
+# Author: Yuriy Tigunov
+# Date: 2023.02.17
+# Purpose: bash daemon for parsing logs
+
+SERVICE="{{ service }}"
+LOGPATH="{{ logpath }}"
+LOGFILE="{{ logfile }}"
+BADSTRING="{{ badstring }}"
+
+if [ -f "$LOGFILE" ] &&  grep -q $BADSTRING $LOGFILE
+then systemctl restart $SERVICE.service
+tar -zcvf $LOGPATH/$(date +"%Y_%m_%d_%H_%M_%S").tar.gz $LOGFILE
+echo '' > $LOGFILE
+fi
+
+#END

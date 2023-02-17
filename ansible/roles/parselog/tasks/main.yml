@@ -1,0 +1,32 @@
+---
+# tasks file for parselog
+- name: Make dir for script
+  ansible.builtin.file:
+    path: /usr/share/parselog
+    state: directory
+
+- name: Copy script
+  ansible.builtin.template:
+    dest: /usr/share/parselog/parselog.sh
+    src: parselog.sh.j2
+    mode: '0774'
+
+- name: Copy servise unit file
+  ansible.builtin.template:
+    dest: /etc/systemd/system/backend@{{service}}.service
+    src: service.j2
+
+- name: Copy timer unit file
+  ansible.builtin.template:
+    dest: /etc/systemd/system/backend@{{service}}.timer
+    src: timer.j2
+
+- name: Start parse daemon
+  ansible.builtin.systemd:
+    state: started
+    name: backend@{{service}}.service
+
+- name: Start parse timer daemon
+  ansible.builtin.systemd:
+    state: started
+    name: backend@{{service}}.timer

@@ -1,0 +1,9 @@
+client_ip_address = ["XX.XX.XXX.XX/32", "XX.XXX.XX.XXX/32"] // curl api.ipify.org
+allow_ingress_ports = ["22"]
+path_to_private_key = "path_to_your_private_ssh_key"
+aws_key_name = "aws_key_name"
+service = "tasks"
+logpath = "/var/log/apache2/"
+logfile = "/var/log/apache2/error.log"
+badstring = "very_bad_string"
+

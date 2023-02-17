@@ -1,0 +1,7 @@
+---
+- name: parse_logs
+  hosts: all
+  become: true
+  roles:
+    - name: parselog
+      tags: pl

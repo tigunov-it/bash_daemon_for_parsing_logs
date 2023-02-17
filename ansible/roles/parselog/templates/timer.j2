@@ -1,0 +1,10 @@
+[Unit]
+Description=Parselog Daemon Timer
+Requires=backend@{{service}}.service
+
+[Timer]
+Unit=backend@{{service}}.service
+OnCalendar=*:5/5
+
+[Install]
+WantedBy=timers.target

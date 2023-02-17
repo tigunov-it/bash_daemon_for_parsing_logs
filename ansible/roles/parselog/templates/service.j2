@@ -1,0 +1,11 @@
+[Unit]
+Description=Parselog Daemon
+Wants=backend@{{service}}.timer
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/share/parselog/parselog.sh
+
+[Install]
+WantedBy=default.target
