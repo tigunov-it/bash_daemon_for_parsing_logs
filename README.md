@@ -50,7 +50,7 @@ fi
 ```
 
 Ansible create bash daemon for parse logs every 5 minutes
-Example backend@tasks.service :
+Example backend_tasks.service :
 ```
 [Unit]
 Description=Parselog Daemon
@@ -64,7 +64,7 @@ ExecStart=/usr/share/parselog/parselog.sh
 [Install]
 WantedBy=default.target
 ```
-Example backend@tasks.timer:
+Example backend_tasks.timer:
 
 ```
 [Unit]
